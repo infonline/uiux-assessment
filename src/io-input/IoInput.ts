@@ -29,6 +29,10 @@ export class IoInput extends LitElement {
                 return html`
                     <input type="search" .value="${this.value}">
                 `;
+            case 'email':
+                return html`
+                    <input type="email" .value="${this.value}">
+                `;
             default:
                 return html `
                     <input type="text" .value="${this.value}">

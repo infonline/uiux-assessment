@@ -18,6 +18,7 @@
         import { html, render } from 'lit';
         import '../dist/src/io-button/io-button.js';
         import '../dist/src/io-select/io-select.js';
+        import '../dist/src/io-input/io-input.js';
 
         render(
             html`
@@ -37,6 +38,9 @@
                     <option value="2">test-2</option>    
                     <option value="3">test-3</option>    
                 </io-select>
+                <hr>
+                <h1>io-input</h1>
+                <io-input>
       `,
             document.querySelector('#demo')
         );

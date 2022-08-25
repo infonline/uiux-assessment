@@ -7,6 +7,7 @@ stages:
   - publish
 
 install:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
   tags:
     - docker
   stage: install
@@ -17,6 +18,7 @@ install:
     - yarn install
 
 build:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
   tags:
     - docker
   stage: build
@@ -41,6 +43,7 @@ release:
     - main
 
 publish:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
   tags:
     - docker
   stage: publish

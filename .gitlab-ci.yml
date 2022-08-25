@@ -22,6 +22,8 @@ build:
   tags:
     - docker
   stage: build
+  dependencies:
+    - install
   only:
     - main
     - tags

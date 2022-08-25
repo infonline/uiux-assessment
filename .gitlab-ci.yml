@@ -39,12 +39,12 @@ release:
   stage: release
   tags:
     - docker
-  dependencies:
-    - install
   variables:
     GITLAB_TOKEN: ${ACCESS_TOKEN}
     GITLAB_URL: 'https://gitlab.infonline.de'
     GITLAB_PREFIX: '/api/v4'
+  before_script:
+    - npm install -g semantic-release@19.0.5
   script:
     - semantic-release
   only:

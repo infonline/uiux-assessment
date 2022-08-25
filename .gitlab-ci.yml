@@ -16,6 +16,10 @@ install:
     - tags
   script:
     - yarn install
+  artifacts:
+    paths:
+    - 'node_modules/'
+    expire_in: 1 day
 
 build:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine

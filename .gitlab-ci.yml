@@ -1,0 +1,56 @@
+image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:stable
+
+stages:
+  - install
+  - build
+  - release
+  - publish
+
+install:
+  tags:
+    - docker
+  stage: install
+  only:
+    - main
+    - tags
+  script:
+    - yarn install
+
+build:
+  tags:
+    - docker
+  stage: build
+  only:
+    - main
+    - tags
+  script:
+    - yarn build
+
+release:
+  stage: release
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16
+  tags:
+    - docker
+  variables:
+    GITLAB_TOKEN: ${ACCESS_TOKEN}
+    GITLAB_URL: 'https://gitlab.infonline.de'
+    GITLAB_PREFIX: '/api/v4'
+  script:
+    - semantic-release
+  only:
+    - main
+
+publish:
+  tags:
+    - docker
+  stage: publish
+  dependencies:
+    - install
+    - build
+  only:
+    - tags
+  script:
+    - echo $CI_COMMIT_TAG | xargs -I {} sed -i 's/0.0.0-development/{}/g' package.json
+    - echo "@iom:registry=https://gitlab.ioint.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" > .npmrc
+    - echo "//gitlab.ioint.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - npm publish

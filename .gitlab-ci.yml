@@ -8,9 +8,9 @@ stages:
 
 install:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
+  stage: install
   tags:
     - docker
-  stage: install
   only:
     - main
     - tags
@@ -23,9 +23,9 @@ install:
 
 build:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
+  stage: build
   tags:
     - docker
-  stage: build
   dependencies:
     - install
   only:
@@ -35,10 +35,12 @@ build:
     - yarn build
 
 release:
-  stage: release
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16
+  stage: release
   tags:
     - docker
+  dependencies:
+    - install
   variables:
     GITLAB_TOKEN: ${ACCESS_TOKEN}
     GITLAB_URL: 'https://gitlab.infonline.de'

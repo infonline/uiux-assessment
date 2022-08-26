@@ -9,13 +9,11 @@
         "type": "git",
         "url": "https://gitlab.ioint.de/tec/development/prototypes/io-component-framework.git"
     },
-    "publishConfig": {
-        "@iom:registry": "https://gitlab.infonline.de/api/v4/projects/567/packages/npm/"
-    },
     "exports": {
         ".": "./dist/src/index.js",
         "./io-button.js": "./dist/src/io-button/io-button.js",
-        "./io-select.js": "./dist/src/io-select/io-select.js"
+        "./io-select.js": "./dist/src/io-select/io-select.js",
+        "./io-input.js": "./dist/src/io-input/io-input.js"
     },
     "scripts": {
         "analyze": "cem analyze --litelement",

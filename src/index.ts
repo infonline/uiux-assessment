@@ -1,11 +1,4 @@
-const IoButton = require('./io-button/IoButton.js')
-const IoSelect = require('./io-select/IoSelect.js')
-const IoInput = require('./io-input/IoInput.js')
-const IoButtonReact = require('./io-button/io-button-react.js')
-
-module.exports = {
-    IoButtonReact,
-    IoButton,
-    IoSelect,
-    IoInput
-}
+export { IoButton } from './io-button/IoButton.js';
+export { IoSelect } from './io-select/IoSelect.js';
+export { IoInput } from './io-input/IoInput.js';
+export { IoButtonReact } from './io-button/io-button-react.js';

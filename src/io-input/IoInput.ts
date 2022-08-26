@@ -33,6 +33,10 @@ export class IoInput extends LitElement {
                 return html`
                     <input type="email" .value="${this.value}">
                 `;
+            case 'tel':
+                return html`
+                    <input type="tel" .value="${this.value}">
+                `;
             default:
                 return html `
                     <input type="text" .value="${this.value}">

@@ -33,6 +33,12 @@ export class IoButton extends LitElement {
         background-color: #bdc300;
         color: black;
     }
+
+    .outline {
+        background-color: transparent;
+        color: black;
+        border: 1px solid #8a8a8a;
+    }
   `;
 
     render() {

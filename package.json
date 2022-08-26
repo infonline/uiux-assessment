@@ -24,13 +24,16 @@
         "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore"
     },
     "dependencies": {
-        "lit": "^2.0.2"
+        "@lit-labs/react": "^1.0.8",
+        "lit": "^2.0.2",
+        "react": "^18.2.0"
     },
     "devDependencies": {
         "@custom-elements-manifest/analyzer": "^0.4.17",
         "@open-wc/eslint-config": "^4.3.0",
         "@open-wc/testing": "next",
         "@semantic-release/gitlab": "^9.4.1",
+        "@types/react": "^18.0.17",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
         "@web/dev-server": "^0.1.28",

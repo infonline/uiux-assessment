@@ -7,7 +7,6 @@ export const IoButtonReact = createComponent(
     'io-button',
     IoButton,
     {
-        onactivate: 'activate',
-        onchange: 'change',
+        onclick: 'click'
     }
 );

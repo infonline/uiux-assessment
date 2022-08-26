@@ -12,6 +12,7 @@
     "exports": {
         ".": "./dist/src/index.js",
         "./io-button.js": "./dist/src/io-button/io-button.js",
+        "./io-button-react.js": "./dist/src/io-button/io-button-react.js",
         "./io-select.js": "./dist/src/io-select/io-select.js",
         "./io-input.js": "./dist/src/io-input/io-input.js"
     },

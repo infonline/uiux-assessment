@@ -49,3 +49,9 @@ export class IoButton extends LitElement {
         `;
     }
 }
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "io-button": IoButton;
+    }
+}

@@ -44,3 +44,9 @@ export class IoInput extends LitElement {
         }
     }
 }
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "io-input": IoInput;
+    }
+}

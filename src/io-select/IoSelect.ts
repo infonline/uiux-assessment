@@ -22,3 +22,9 @@ export class IoSelect extends LitElement {
         `;
     }
 }
+
+declare global {
+    interface HTMLElementTagNameMap {
+        "io-select": IoSelect;
+    }
+}

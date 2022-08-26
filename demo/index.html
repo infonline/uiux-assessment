@@ -5,8 +5,26 @@
     <title>Component Testframe</title>
     <meta charset="utf-8">
     <style>
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: arial;
+        }
         body {
             background: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            background-color: rgb(235, 235, 235);
+            margin: 0;
+            padding: 6px 12px;
+            border-bottom: 1px solid rgb(191, 191, 191);
+            border-top: 6px solid rgb(191, 191, 191);
+
+        }
+        .block {
+            padding: 12px;
         }
     </style>
 </head>
@@ -23,37 +41,41 @@
         render(
             html`
                 <h1>io-button</h1>
-                <io-button>primary-button</io-button>
-                <br><br>
-                <io-button type="secondary">secondary-button</io-button>
-                <br><br>
-                <io-button type="danger">danger-button</io-button>
-                <br><br>
-                <io-button type="warning">warning-button</io-button>
-                <br><br>
-                <io-button type="outline">outline-button</io-button>
-                <hr>
+                <div class="block">
+                    <io-button>primary-button</io-button>
+                    <br><br>
+                    <io-button type="secondary">secondary-button</io-button>
+                    <br><br>
+                    <io-button type="danger">danger-button</io-button>
+                    <br><br>
+                    <io-button type="warning">warning-button</io-button>
+                    <br><br>
+                    <io-button type="outline">outline-button</io-button>
+                </div>
 
                 <h1>io-select</h1>
-                <io-select>
-                    <option value="1">test-1</option>    
-                    <option value="2">test-2</option>    
-                    <option value="3">test-3</option>    
-                </io-select>
-                <hr>
-                
+                <div class="block">
+                    <io-select>
+                        <option value="1">test-1</option>    
+                        <option value="2">test-2</option>    
+                        <option value="3">test-3</option>    
+                    </io-select>
+                </div>
+               
                 <h1>io-input</h1>
-                <io-input type="text" value="text"></io-input>
-                <br><br>
-                <io-input type="password" value="password"></io-input>
-                <br><br>
-                <io-input type="number" value="12345"></io-input>
-                <br><br>
-                <io-input type="search" value="search"></io-input>
-                <br><br>
-                <io-input type="email" value="test@mail.com"></io-input>
-                <br><br>
-                <io-input type="tel" value="01782678442"></io-input>
+                <div class="block">
+                    <io-input type="text" value="text"></io-input>
+                    <br><br>
+                    <io-input type="password" value="password"></io-input>
+                    <br><br>
+                    <io-input type="number" value="12345"></io-input>
+                    <br><br>
+                    <io-input type="search" value="search"></io-input>
+                    <br><br>
+                    <io-input type="email" value="test@mail.com"></io-input>
+                    <br><br>
+                    <io-input type="tel" value="01782678442"></io-input>
+                </div>
       `,
             document.querySelector('#demo')
         );

@@ -2,8 +2,7 @@ image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:stable
 
 stages:
   - install
-  - build-web
-  - build-react
+  - build
   - release
   - publish
 
@@ -39,40 +38,23 @@ install:react-components:
     - 'react-components/'
     expire_in: 1 day
 
-build:web-components:
+build:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
-  stage: build-web
+  stage: build
   tags:
     - docker
   dependencies:
     - install:web-components
+    - install:react-components
   only:
     - main
     - tags
   script:
-    - cd web-components
-    - yarn build
+    - cd web-components && yarn build && cd ..
+    - cd react-components && yarn build
   artifacts:
     paths:
     - 'web-components/dist'
-    - 'react-components/'
-    expire_in: 1 day
-
-build:react-components:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
-  stage: build-react
-  tags:
-    - docker
-  dependencies:
-    - build:web-components
-  only:
-    - main
-    - tags
-  script:
-    - cd react-components
-    - yarn build
-  artifacts:
-    paths:
     - 'react-components/dist'
     expire_in: 1 day
 
@@ -99,7 +81,7 @@ publish:web-components:
   stage: publish
   dependencies:
     - install:web-components
-    - build:web-components
+    - build
   only:
     - tags
   script:
@@ -115,7 +97,7 @@ publish:react-components:
   stage: publish
   dependencies:
     - install:react-components
-    - build:react-components
+    - build
   only:
     - tags
   script:

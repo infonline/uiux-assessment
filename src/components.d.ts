@@ -16,6 +16,16 @@ export namespace Components {
          */
         "size": string;
     }
+    interface IoInput {
+        /**
+          * the type of the button
+         */
+        "type": string;
+        /**
+          * the value of the button
+         */
+        "value": string;
+    }
 }
 declare global {
     interface HTMLIoButtonElement extends Components.IoButton, HTMLStencilElement {
@@ -24,8 +34,15 @@ declare global {
         prototype: HTMLIoButtonElement;
         new (): HTMLIoButtonElement;
     };
+    interface HTMLIoInputElement extends Components.IoInput, HTMLStencilElement {
+    }
+    var HTMLIoInputElement: {
+        prototype: HTMLIoInputElement;
+        new (): HTMLIoInputElement;
+    };
     interface HTMLElementTagNameMap {
         "io-button": HTMLIoButtonElement;
+        "io-input": HTMLIoInputElement;
     }
 }
 declare namespace LocalJSX {
@@ -39,8 +56,19 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
+    interface IoInput {
+        /**
+          * the type of the button
+         */
+        "type"?: string;
+        /**
+          * the value of the button
+         */
+        "value"?: string;
+    }
     interface IntrinsicElements {
         "io-button": IoButton;
+        "io-input": IoInput;
     }
 }
 export { LocalJSX as JSX };
@@ -48,6 +76,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "io-button": LocalJSX.IoButton & JSXBase.HTMLAttributes<HTMLIoButtonElement>;
+            "io-input": LocalJSX.IoInput & JSXBase.HTMLAttributes<HTMLIoInputElement>;
         }
     }
 }

@@ -1,23 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "ES2015",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["ES2019", "dom"],
-    "strict": true,
-    "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "outDir": "dist",
-    "sourceMap": true,
-    "inlineSources": true,
-    "rootDir": "./",
-    "declaration": true,
-    "declarationMap": true,
-    "incremental": true,
-    "useDefineForClassFields": false
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "moduleResolution": "node",
+    "module": "esnext",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "jsx": "react",
+    "jsxFactory": "h"
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

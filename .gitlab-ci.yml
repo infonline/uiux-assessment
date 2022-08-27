@@ -65,8 +65,8 @@ publish:
   only:
     - tags
   script:
-    - rm -rf demo src
-    - rm tsconfig.json web-dev-server.config.mjs .gitlab-ci.yml .releaserc.json README.md .editorconfig
+    - rm -rf src
+    - rm tsconfig.json .gitlab-ci.yml .releaserc.json readme.md .editorconfig
     - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}

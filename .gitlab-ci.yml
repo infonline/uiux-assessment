@@ -20,7 +20,7 @@ install:web-components:
     - yarn install
   artifacts:
     paths:
-    - 'web-components/node_modules/'
+    - 'web-components'
     expire_in: 1 day
 
 install:react-components:
@@ -36,8 +36,7 @@ install:react-components:
     - yarn install
   artifacts:
     paths:
-    - 'react-components/package.json'
-    - 'react-components/node_modules/'
+    - 'react-components/'
     expire_in: 1 day
 
 build:web-components:

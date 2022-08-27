@@ -55,6 +55,7 @@ build:
   artifacts:
     paths:
     - 'web-components/dist'
+    - 'web-components/loader'
     - 'react-components/dist'
     expire_in: 1 day
 

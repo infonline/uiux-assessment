@@ -1,9 +1,16 @@
 import { Config } from '@stencil/core';
+import { reactOutputTarget as react } from '@stencil/react-output-target';
 
 export const config: Config = {
     namespace: 'io-component-framework',
+    taskQueue: 'async',
     globalStyle: 'src/global/global.css',
     outputTargets: [
+        react({
+            componentCorePackage: '@io/web-components',
+            proxiesFile: '../react-components/src/components/stencil-generated/index.ts',
+            includeDefineCustomElements: true
+        }),
         {
             type: 'dist',
             esmLoaderPath: '../loader',

@@ -2,11 +2,12 @@ image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/docker:stable
 
 stages:
   - install
-  - build
+  - build-web
+  - build-react
   - release
   - publish
 
-install:
+install:web-components:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
   stage: install
   tags:
@@ -15,15 +16,32 @@ install:
     - main
     - tags
   script:
+    - cd web-components
     - yarn install
   artifacts:
     paths:
-    - 'node_modules/'
+    - 'web-components/node_modules/'
     expire_in: 1 day
 
-build:
+install:react-components:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
-  stage: build
+  stage: install
+  tags:
+    - docker
+  only:
+    - main
+    - tags
+  script:
+    - cd react-components
+    - yarn install
+  artifacts:
+    paths:
+    - 'react-components/node_modules/'
+    expire_in: 1 day
+
+build:web-components:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
+  stage: build-web
   tags:
     - docker
   dependencies:
@@ -32,10 +50,30 @@ build:
     - main
     - tags
   script:
+    - cd web-components
     - yarn build
   artifacts:
     paths:
-    - 'dist/'
+    - 'web-components/dist'
+    - 'react-components/'
+    expire_in: 1 day
+
+build:react-components:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
+  stage: build-react
+  tags:
+    - docker
+  dependencies:
+    - build-web
+  only:
+    - main
+    - tags
+  script:
+    - cd react-components
+    - yarn build
+  artifacts:
+    paths:
+    - 'react-components/dist'
     expire_in: 1 day
 
 release:
@@ -65,7 +103,9 @@ publish:
   only:
     - tags
   script:
-    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' web-components/package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' react-components/package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
-    - npm publish
+    - cd web-components && npm publish && cd ..
+    - cd react-components && npm publish

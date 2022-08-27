@@ -31,6 +31,7 @@
     },
     "devDependencies": {
         "@semantic-release/gitlab": "^9.4.1",
+        "@stencil/react-output-target": "^0.3.1",
         "@types/jest": "^27.0.3",
         "conventional-changelog-conventionalcommits": "^5.0.0",
         "jest": "^27.4.5",

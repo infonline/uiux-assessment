@@ -47,3 +47,9 @@ button:hover {
     background-color: var(--danger);
     color: var(--text-light);
 }
+
+.flat {
+    background-color: transparent;
+    color: var(--text-dark);
+    border: 1px solid var(--accent-light)
+}

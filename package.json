@@ -30,10 +30,14 @@
         "@stencil/core": "^2.13.0"
     },
     "devDependencies": {
+        "@semantic-release/gitlab": "^9.4.1",
         "@types/jest": "^27.0.3",
+        "conventional-changelog-conventionalcommits": "^5.0.0",
         "jest": "^27.4.5",
         "jest-cli": "^27.4.5",
-        "puppeteer": "^10.0.0"
+        "last-release-git": "^0.0.3",
+        "puppeteer": "^10.0.0",
+        "semantic-release": "^19.0.5"
     },
     "license": "UNLICENSED"
 }

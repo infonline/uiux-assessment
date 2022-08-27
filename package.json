@@ -1,0 +1,21 @@
+{
+  "name": "io-component-framework",
+  "version": "0.0.0-development",
+  "description": "IO Webcomponents Monorepo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.ioint.de/tec/development/prototypes/io-component-framework.git"
+  },
+  "author": "Marvin Reichmann <mreichmann@infonline.de>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@semantic-release/gitlab": "^9.4.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "last-release-git": "^0.0.3",
+    "semantic-release": "^19.0.5"
+  }
+}

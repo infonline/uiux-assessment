@@ -68,6 +68,7 @@ release:
     GITLAB_URL: 'https://gitlab.infonline.de'
     GITLAB_PREFIX: '/api/v4'
   before_script:
+    - yarn install
     - npm install -g semantic-release@19.0.5
   script:
     - semantic-release

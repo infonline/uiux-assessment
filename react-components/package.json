@@ -2,7 +2,6 @@
   "name": "@io/react-components",
   "sideEffects": false,
   "version": "0.0.0-development",
-  "private": true,
   "description": "React specific wrapper for @io/web-components",
   "scripts": {
     "build": "npm run clean && npm run compile",

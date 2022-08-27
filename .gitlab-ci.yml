@@ -45,7 +45,7 @@ build:web-components:
   tags:
     - docker
   dependencies:
-    - install
+    - install:web-components
   only:
     - main
     - tags

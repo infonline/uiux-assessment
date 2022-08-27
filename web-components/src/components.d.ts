@@ -10,7 +10,7 @@ export namespace Components {
         /**
           * the type of the button
          */
-        "appearence": string;
+        "appearance": string;
         /**
           * the size of the button
          */
@@ -50,7 +50,7 @@ declare namespace LocalJSX {
         /**
           * the type of the button
          */
-        "appearence"?: string;
+        "appearance"?: string;
         /**
           * the size of the button
          */

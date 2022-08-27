@@ -10,7 +10,7 @@ export class IoButton {
     /**
      * the type of the button
      */
-    @Prop() appearence: string;
+    @Prop() appearance: string;
 
     /**
      * the size of the button
@@ -19,7 +19,7 @@ export class IoButton {
 
     render() {
         return (
-            <button class={`${this.appearence} ${this.size}`}>
+            <button class={`${this.appearance} ${this.size}`}>
                 <slot></slot>
             </button>
         );

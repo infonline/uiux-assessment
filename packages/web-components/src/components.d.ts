@@ -20,20 +20,6 @@ export namespace Components {
          */
         "size": string;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
 }
 declare global {
     interface HTMLIoButtonElement extends Components.IoButton, HTMLStencilElement {
@@ -42,15 +28,8 @@ declare global {
         prototype: HTMLIoButtonElement;
         new (): HTMLIoButtonElement;
     };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
-    };
     interface HTMLElementTagNameMap {
         "io-button": HTMLIoButtonElement;
-        "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
@@ -68,23 +47,8 @@ declare namespace LocalJSX {
          */
         "size"?: string;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
-    }
     interface IntrinsicElements {
         "io-button": IoButton;
-        "my-component": MyComponent;
     }
 }
 export { LocalJSX as JSX };
@@ -92,7 +56,6 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "io-button": LocalJSX.IoButton & JSXBase.HTMLAttributes<HTMLIoButtonElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
 }

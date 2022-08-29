@@ -1,0 +1,57 @@
+@import "./../../global/_global";
+
+:host {
+    display: block;
+}
+
+button {
+    border: none;
+    height: 32px;
+    font-weight: 500;
+    font-family: arial;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+.compact {
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.primary {
+    background-color: $primary;
+    color: $text-light;
+}
+
+.secondary {
+    background-color: $secondary;
+    color: $text-dark;
+}
+
+.tertiary {
+    background-color: $tertiary;
+    color: $text-light;
+}
+
+.warning {
+    background-color: $warning;
+    color: $text-dark;
+}
+
+.danger {
+    background-color: $danger;
+    color: $text-light;
+}
+
+.flat {
+    background-color: transparent;
+    color: $text-dark;
+    border: 1px solid $accent-light
+}

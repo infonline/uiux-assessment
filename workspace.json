@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "angular-demo": "packages/angular-demo",
+    "react-demo": "packages/react-demo",
+    "react-demo-e2e": "packages/react-demo-e2e",
+    "web-components": "packages/web-components",
+    "web-components-angular": "packages/web-components-angular",
+    "web-components-react": "packages/web-components-react"
+  }
+}

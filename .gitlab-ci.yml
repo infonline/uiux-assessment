@@ -68,10 +68,10 @@ publish:web-components:
   only:
     - tags
   script:
-    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' packages/web-components/package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' dist/packages/web-components/package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
-    - cd packages/web-components && npm publish
+    - cd dist/packages/web-components && npm publish
 
 publish:react-components:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
@@ -84,10 +84,10 @@ publish:react-components:
   only:
     - tags
   script:
-    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' packages/web-components-react/package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' dist/packages/web-components-react/package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
-    - cd packages/web-components-react && npm publish
+    - cd dist/packages/web-components-react && npm publish
 
 publish:angular-components:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
@@ -100,7 +100,7 @@ publish:angular-components:
   only:
     - tags
   script:
-    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' packages/web-components-angular/package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' dist/packages/web-components-angular/package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
-    - cd packages/web-components-angular && npm publish
+    - cd dist/packages/web-components-angular && npm publish

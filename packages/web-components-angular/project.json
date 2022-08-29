@@ -3,6 +3,22 @@
   "sourceRoot": "packages/web-components-angular/src",
   "prefix": "io",
   "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/web-components-angular"],
+      "options": {
+        "project": "packages/web-components-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/web-components-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/web-components-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/web-components-angular"],

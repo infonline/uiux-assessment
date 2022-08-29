@@ -1,6 +1,6 @@
 {
   "name": "@io/web-components",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.js",
   "es2015": "./dist/esm/index.mjs",

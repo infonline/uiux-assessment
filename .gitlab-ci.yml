@@ -6,7 +6,7 @@ stages:
   - release
   - publish
 
-install:web-components:
+install:
   image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
   stage: install
   tags:
@@ -15,27 +15,10 @@ install:web-components:
     - main
     - tags
   script:
-    - cd web-components
-    - yarn install
+    - npm install
   artifacts:
     paths:
-    - 'web-components'
-    expire_in: 1 day
-
-install:react-components:
-  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
-  stage: install
-  tags:
-    - docker
-  only:
-    - main
-    - tags
-  script:
-    - cd react-components
-    - yarn install
-  artifacts:
-    paths:
-    - 'react-components/'
+    - node_modules
     expire_in: 1 day
 
 build:
@@ -44,19 +27,17 @@ build:
   tags:
     - docker
   dependencies:
-    - install:web-components
-    - install:react-components
+    - install
   only:
     - main
     - tags
   script:
-    - cd web-components && yarn build && cd ..
-    - cd react-components && yarn build
+    - npx nx build web-components
+    - npx nx build web-components-react
+    - npx nx build web-components-angular
   artifacts:
     paths:
-    - 'web-components/dist'
-    - 'web-components/loader'
-    - 'react-components/dist'
+      - dist
     expire_in: 1 day
 
 release:
@@ -82,7 +63,7 @@ publish:web-components:
     - docker
   stage: publish
   dependencies:
-    - install:web-components
+    - install
     - build
   only:
     - tags
@@ -98,12 +79,28 @@ publish:react-components:
     - docker
   stage: publish
   dependencies:
-    - install:react-components
+    - install
     - build
   only:
     - tags
   script:
-    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' react-components/package.json
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' web-components-react/package.json
     - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
     - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
-    - cd react-components && npm publish
+    - cd web-components-react && npm publish
+
+publish:angular-components:
+  image: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/node:16.16-alpine
+  tags:
+    - docker
+  stage: publish
+  dependencies:
+    - install
+    - build
+  only:
+    - tags
+  script:
+    - echo ${CI_COMMIT_TAG} | xargs -I {} sed -i 's/0.0.0-development/{}/g' web-components-angular/package.json
+    - npm config set @io:registry https://gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/    
+    - npm config set -- '//gitlab.infonline.de/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken' ${CI_JOB_TOKEN}
+    - cd web-components-angular && npm publish

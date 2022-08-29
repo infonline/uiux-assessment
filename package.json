@@ -18,6 +18,7 @@
     "@angular/cli": "~14.1.1",
     "@angular/compiler-cli": "~14.1.1",
     "@angular/language-service": "~14.1.1",
+    "@babel/core": "^7.18.13",
     "@nrwl/angular": "^14.5.10",
     "@nrwl/cli": "14.5.10",
     "@nrwl/cypress": "14.5.10",
@@ -29,6 +30,8 @@
     "@nrwl/web": "14.5.10",
     "@nrwl/workspace": "14.5.10",
     "@nxext/stencil": "^14.0.6",
+    "@nxext/vite": "^14.0.3",
+    "@nxext/vitest": "^14.0.2",
     "@semantic-release/gitlab": "^9.4.1",
     "@stencil/angular-output-target": "^0.4.0",
     "@stencil/core": "2.17.1",
@@ -63,8 +66,10 @@
     "prettier": "^2.6.2",
     "puppeteer": "^15.5.0",
     "react-test-renderer": "18.2.0",
+    "semantic-release": "^19.0.5",
     "ts-jest": "27.1.4",
     "ts-node": "10.9.1",
+    "tsconfig-paths": "^3.14.1",
     "typescript": "~4.7.2"
   },
   "workspaces": [

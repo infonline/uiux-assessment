@@ -15,6 +15,16 @@ button {
     transition: 0.1s ease-in-out;
 }
 
+button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(220, 220, 220);
+    color: rgb(155, 155, 155);
+}
+
+button:disabled:hover {
+    filter: none;
+}
+
 button:hover {
     filter: brightness(1.2);
 }

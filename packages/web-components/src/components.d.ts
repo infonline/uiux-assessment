@@ -12,6 +12,10 @@ export namespace Components {
          */
         "appearance": string;
         /**
+          * flag for disabling the button
+         */
+        "disabled": boolean;
+        /**
           * the size of the button
          */
         "size": string;
@@ -55,6 +59,10 @@ declare namespace LocalJSX {
           * the type of the button
          */
         "appearance"?: string;
+        /**
+          * flag for disabling the button
+         */
+        "disabled"?: boolean;
         /**
           * the size of the button
          */

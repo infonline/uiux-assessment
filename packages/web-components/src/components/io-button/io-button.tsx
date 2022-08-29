@@ -8,6 +8,11 @@ import { Component, Prop, h, Host } from '@stencil/core';
 export class IoButton {
 
     /**
+     * flag for disabling the button
+     */
+    @Prop() disabled: boolean;
+
+    /**
      * the type of the button
      */
     @Prop() appearance: string;
@@ -20,7 +25,7 @@ export class IoButton {
     render() {
         return (
             <Host>
-                <button class={`${this.appearance} ${this.size}`}>
+                <button disabled={this.disabled} class={`${this.appearance} ${this.size}`}>
                     <slot></slot>
                 </button>
             </Host>

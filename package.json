@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "postinstall": "ngcc --properties es2020 browser module main"
+    "postinstall": "ngcc --properties es2020 browser module main",
+    "wc:dev": "nx build web-components --watch",
+    "wcdemo:dev": "nx serve web-components",
+    "ng:dev": "nx serve angular-demo --port 4100",
+    "react:dev": "nx serve react-demo --port 4200"
   },
   "private": true,
   "devDependencies": {
